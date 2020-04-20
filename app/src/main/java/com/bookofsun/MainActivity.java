@@ -115,8 +115,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         gameXO = new Game(players, new Filed(FILED_SIZE), NAME);
         consoleView = new ConsoleView();
-
-
     }
 
     @Override

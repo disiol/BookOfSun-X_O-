@@ -48,16 +48,25 @@ public class ConsoleView {
     //TODO
     public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view) {
         final Filed filed = game.getFiled();
-        final Figure winner = winnerController.getWinner(filed);
+        Figure winner = winnerController.getWinner(filed);
+
         final Figure currentFigure = currentMoveController.currentMove(filed);
 
         //check for winers
-        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure))
+        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
             return false;
+        }
 
 
         playerMove(players, filed, currentFigure, playerMove, x, y, imageView, view);
+        winner = winnerController.getWinner(filed);
+
+        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
+            return false;
+        }
+
         return true;
+
     }
 
     private boolean checkForWiners(Player[] players, TextView playerMove, ImageView imageView, Context view, Figure winner, Figure currentFigure) {
