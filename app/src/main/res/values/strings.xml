@@ -1,3 +1,7 @@
 <resources>
     <string name="app_name">Book of sun</string>
+
+    <string name="player_2_ef_figure_o">Player 2: ef, figure: O</string>
+    <string name="player_1_den_figure_x">Player 1: den figure: X</string>
+    <string name="title_activity_entre_names_of_pleares">Sign in</string>
 </resources>

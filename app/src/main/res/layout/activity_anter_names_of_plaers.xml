@@ -8,11 +8,10 @@
     <TextView
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="200dp"
         android:gravity="center_horizontal"
-        android:textColor="@color/wite"
+        android:textColor="@android:color/white"
         android:fontFamily="@font/rockletter_simple"
-
         android:textSize="@dimen/titel_text_size"
         android:text="Input players Names">
     </TextView>
@@ -35,7 +34,7 @@
                 android:gravity="left"
                 android:fontFamily="@font/rockletter_simple"
                 android:background="#7000"
-                android:textColor="@color/wite"
+                android:textColor="@android:color/white"
                 android:text="First player">
             </TextView>
             <EditText
@@ -49,7 +48,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/rockletter_simple"
                 android:background="#7000"
-                android:textColor="@color/wite"
+                android:textColor="@android:color/white"
                 android:layout_marginLeft="5dp">
                 <requestFocus>
                 </requestFocus>
@@ -63,7 +62,7 @@
                 android:id="@+id/second_player_textView"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:textColor="@color/wite"
+                android:textColor="@android:color/white"
                 android:background="#7000"
                 android:textSize="@dimen/titel_text_size"
                 android:gravity="left"
@@ -79,7 +78,7 @@
                 android:gravity="center"
                 android:fontFamily="@font/rockletter_simple"
                 android:background="#7000"
-                android:textColor="@color/wite"
+                android:textColor="@android:color/white"
                 android:layout_marginLeft="5dp">
             </EditText>
         </TableRow>
@@ -94,7 +93,7 @@
         android:gravity="center"
         android:fontFamily="@font/rockletter_simple"
         android:layout_gravity="center_horizontal"
-        android:textColor="@color/wite"
+        android:textColor="@android:color/white"
         android:text="START GAME">
     </Button>
 
