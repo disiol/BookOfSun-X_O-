@@ -14,7 +14,7 @@ import com.bookofsun.CLI.modelCLI.exeptions.InvalidPointException;
 
 public class CurrentMoveController {
 
-    public Figure currentMove(final Filed filed) throws InvalidPointException {
+    public Figure currentMove(final Filed filed) {
         int countFigure = 0;
         for (int x = 0; x < filed.getSize(); x++) {
             countFigure += currentFiguresInTheRow(filed, x);
@@ -33,13 +33,17 @@ public class CurrentMoveController {
 
     }
 
-    private int currentFiguresInTheRow(final Filed filed, final int row) throws InvalidPointException {
+    private int currentFiguresInTheRow(final Filed filed, final int row) {
         int countFigure = 0;
 
         for (int x = 0; x < filed.getSize(); x++) {
-            if (filed.getFigure(new Point(x, row)) != null) {
-                countFigure++;
+            try {
+                if (filed.getFigure(new Point(x, row)) != null) {
+                    countFigure++;
 
+                }
+            } catch (InvalidPointException e) {
+                e.printStackTrace();
             }
 
         }

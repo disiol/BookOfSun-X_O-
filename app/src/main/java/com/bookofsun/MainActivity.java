@@ -165,16 +165,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void setMove(int x, int y, ImageView imageView, Context applicationContext)  {
         if (this.move) {
-            try {
-                this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext);
-            } catch (InvalidPointException e) {
-                e.printStackTrace();
-            }
-            try {
-                consoleView.show(gameXO);
-            } catch (InvalidPointException e) {
-                e.printStackTrace();
-            }
+            this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext);
+            consoleView.show(gameXO);
         }
     }
 }

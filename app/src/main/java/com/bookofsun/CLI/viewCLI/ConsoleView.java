@@ -19,7 +19,6 @@ import com.bookofsun.CLI.modelCLI.Player;
 import com.bookofsun.CLI.modelCLI.exeptions.AlreadyOccupantException;
 import com.bookofsun.CLI.modelCLI.exeptions.InvalidPointException;
 
-
 /**
  * Author: Olenyk Denis (deoniisii@gmail.com)
  * on 07.08.15.
@@ -29,11 +28,12 @@ public class ConsoleView {
 
     private final CurrentMoveController currentMoveController = new CurrentMoveController();
 
-    private final WinnerController winnerController = new WinnerController();
+    private final
+    WinnerController winnerController = new WinnerController();
 
     private final MoveController moveController = new MoveController();
 
-    public void show(final Game game) throws InvalidPointException {
+    public void show(final Game game) {
         System.out.printf("GameStart name: %s\n", game.getName());
         final Filed filed = game.getFiled();
         for (int x = 0; x < filed.getSize(); x++) {
@@ -46,7 +46,7 @@ public class ConsoleView {
     }
 
     //TODO
-    public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view) throws InvalidPointException {
+    public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view) {
         final Filed filed = game.getFiled();
         final Figure winner = winnerController.getWinner(filed);
 
@@ -135,7 +135,7 @@ public class ConsoleView {
 
 
     private void printLine(final Filed filed,
-                           final int x) throws InvalidPointException {
+                           final int x) {
 
 
         for (int y = 0; y < filed.getSize(); y++) {
@@ -145,7 +145,12 @@ public class ConsoleView {
             System.out.print(" ");
 
             final Figure figure;
-            figure = filed.getFigure(new Point(y, x));
+            try {
+                figure = filed.getFigure(new Point(y, x));
+            } catch (final InvalidPointException e) {
+                e.printStackTrace();
+                throw new RuntimeException(e);
+            }
             System.out.print(figure != null ? figure : " ");
             System.out.print(" ");
 
