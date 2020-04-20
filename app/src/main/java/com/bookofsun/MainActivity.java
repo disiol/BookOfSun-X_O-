@@ -115,6 +115,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
         gameXO = new Game(players, new Filed(FILED_SIZE), NAME);
         consoleView = new ConsoleView();
+
+        playerMove.setText(String.format("Player move: %s, figure: %s", players[0].getName(), players[0].getFigure()));
+
+
+
     }
 
     @Override
