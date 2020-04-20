@@ -59,6 +59,7 @@ public class ConsoleView {
 
 
         playerMove(players, filed, currentFigure, playerMove, x, y, imageView, view);
+
         winner = winnerController.getWinner(filed);
 
         if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
