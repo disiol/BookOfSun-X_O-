@@ -8,8 +8,9 @@ import android.widget.EditText;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.trust.apset.MainActivity;
-import com.trust.apset.R;
+import com.bookofsun.MainActivity;
+import com.bookofsun.R;
+
 
 public class AnterNamesOfPlaers extends AppCompatActivity implements View.OnClickListener {
 

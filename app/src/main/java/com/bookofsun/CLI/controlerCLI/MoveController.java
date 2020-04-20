@@ -2,10 +2,10 @@ package com.bookofsun.CLI.controlerCLI;
 
 import android.graphics.Point;
 
-import com.trust.apset.CLI.modelCLI.Figure;
-import com.trust.apset.CLI.modelCLI.Filed;
-import com.trust.apset.CLI.modelCLI.exeptions.AlreadyOccupantException;
-import com.trust.apset.CLI.modelCLI.exeptions.InvalidPointException;
+import com.bookofsun.CLI.modelCLI.Figure;
+import com.bookofsun.CLI.modelCLI.Filed;
+import com.bookofsun.CLI.modelCLI.exeptions.AlreadyOccupantException;
+import com.bookofsun.CLI.modelCLI.exeptions.InvalidPointException;
 
 
 /**

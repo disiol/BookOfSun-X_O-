@@ -2,7 +2,7 @@ package com.bookofsun.CLI.modelCLI;
 
 import android.graphics.Point;
 
-import com.trust.apset.CLI.modelCLI.exeptions.InvalidPointException;
+import com.bookofsun.CLI.modelCLI.exeptions.InvalidPointException;
 
 
 /**

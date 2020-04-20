@@ -9,15 +9,17 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.trust.apset.CLI.modelCLI.Figure;
-import com.trust.apset.CLI.modelCLI.Filed;
-import com.trust.apset.CLI.modelCLI.Game;
-import com.trust.apset.CLI.modelCLI.Player;
-import com.trust.apset.CLI.viewCLI.AnterNamesOfPlaers;
-import com.trust.apset.CLI.viewCLI.ConsoleView;
+import com.bookofsun.CLI.modelCLI.Figure;
+import com.bookofsun.CLI.modelCLI.Filed;
+import com.bookofsun.CLI.modelCLI.Game;
+import com.bookofsun.CLI.modelCLI.Player;
+import com.bookofsun.CLI.modelCLI.exeptions.InvalidPointException;
+import com.bookofsun.CLI.viewCLI.AnterNamesOfPlaers;
+import com.bookofsun.CLI.viewCLI.ConsoleView;
 
-import static com.trust.apset.CLI.viewCLI.AnterNamesOfPlaers.PLAYER_TO_NAME;
-import static com.trust.apset.CLI.viewCLI.AnterNamesOfPlaers.PLAYER_WANE_NAME;
+import static com.bookofsun.CLI.viewCLI.AnterNamesOfPlaers.PLAYER_TO_NAME;
+import static com.bookofsun.CLI.viewCLI.AnterNamesOfPlaers.PLAYER_WANE_NAME;
+
 
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
     private TextView buttonExit, buttonNewGame;
@@ -161,10 +163,18 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    void setMove(int x, int y, ImageView imageView, Context applicationContext) {
+    void setMove(int x, int y, ImageView imageView, Context applicationContext)  {
         if (this.move) {
-            this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext);
-            consoleView.show(gameXO);
+            try {
+                this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext);
+            } catch (InvalidPointException e) {
+                e.printStackTrace();
+            }
+            try {
+                consoleView.show(gameXO);
+            } catch (InvalidPointException e) {
+                e.printStackTrace();
+            }
         }
     }
 }
