@@ -49,20 +49,26 @@ public class ConsoleView {
     public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view) {
         final Filed filed = game.getFiled();
         final Figure winner = winnerController.getWinner(filed);
-
-        //CHeck for winers
-        if (winnerIsPlayer(players, winner, playerMove, imageView, view)) {
-            return false;
-        }
-
         final Figure currentFigure = currentMoveController.currentMove(filed);
-        if (noWinnerAndNoMovesLeft(winner, currentFigure, playerMove)) {
+
+        //check for winers
+        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure))
             return false;
-        }
 
 
         playerMove(players, filed, currentFigure, playerMove, x, y, imageView, view);
         return true;
+    }
+
+    private boolean checkForWiners(Player[] players, TextView playerMove, ImageView imageView, Context view, Figure winner, Figure currentFigure) {
+        if (winnerIsPlayer(players, winner, playerMove, imageView, view)) {
+            return true;
+        }
+
+        if (noWinnerAndNoMovesLeft(winner, currentFigure, playerMove)) {
+            return true;
+        }
+        return false;
     }
 
     @SuppressLint("SetTextI18n")
