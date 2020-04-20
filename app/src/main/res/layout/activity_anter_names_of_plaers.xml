@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:orientation="vertical"
+    android:background="@drawable/background">
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:gravity="center_horizontal"
+        android:textColor="@color/wite"
+        android:fontFamily="@font/rockletter_simple"
+
+        android:textSize="@dimen/titel_text_size"
+        android:text="Input players Names">
+    </TextView>
+    <TableLayout
+        android:id="@+id/tableLayout1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp"
+        android:stretchColumns="1">
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:layout_marginTop="40dp"
+                android:id="@+id/first_player_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="@dimen/titel_text_size"
+                android:gravity="left"
+                android:fontFamily="@font/rockletter_simple"
+                android:background="#7000"
+                android:textColor="@color/wite"
+                android:text="First player">
+            </TextView>
+            <EditText
+                android:layout_marginTop="40dp"
+
+                android:id="@+id/first_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/titel_text_size"
+                android:gravity="center"
+                android:fontFamily="@font/rockletter_simple"
+                android:background="#7000"
+                android:textColor="@color/wite"
+                android:layout_marginLeft="5dp">
+                <requestFocus>
+                </requestFocus>
+            </EditText>
+        </TableRow>
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <TextView
+                android:id="@+id/second_player_textView"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textColor="@color/wite"
+                android:background="#7000"
+                android:textSize="@dimen/titel_text_size"
+                android:gravity="left"
+                android:fontFamily="@font/rockletter_simple"
+                android:text="Second player">
+            </TextView>
+            <EditText
+                android:id="@+id/second_player_name"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text=""
+                android:textSize="@dimen/titel_text_size"
+                android:gravity="center"
+                android:fontFamily="@font/rockletter_simple"
+                android:background="#7000"
+                android:textColor="@color/wite"
+                android:layout_marginLeft="5dp">
+            </EditText>
+        </TableRow>
+    </TableLayout>
+    <Button
+        android:id="@+id/btnSubmit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#7000"
+        android:layout_marginTop="50dp"
+        android:textSize="20pt"
+        android:gravity="center"
+        android:fontFamily="@font/rockletter_simple"
+        android:layout_gravity="center_horizontal"
+        android:textColor="@color/wite"
+        android:text="START GAME">
+    </Button>
+
+</LinearLayout>
