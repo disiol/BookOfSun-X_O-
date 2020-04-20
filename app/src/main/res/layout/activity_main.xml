@@ -115,7 +115,7 @@
         android:gravity="center"
         android:text="Player move:"
         android:textAllCaps="true"
-        android:textColor="@color/wite"
+        android:textColor="@android:color/white"
         android:textSize="@dimen/textSize"
         android:textStyle="bold"
 
