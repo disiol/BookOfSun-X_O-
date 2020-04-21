@@ -46,22 +46,18 @@ public class ConsoleView {
     }
 
     //TODO
-    public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view, int turn) {
+    public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view, int turn, int currentMufes) {
         final Filed filed = game.getFiled();
         Figure winner = winnerController.getWinner(filed);
 
         final Figure currentFigure = currentMoveController.currentMove(filed);
 
-//        //check for winers
-//        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
-//            return false;
-//        }
-
         playerMove.setText(String.format("Player move: %s, figure: %s", players[turn].getName(), players[turn].getFigure()));
         playerMove(players, filed, currentFigure, playerMove, x, y, imageView, view);
+        System.out.println("currentMufes = " + currentMufes);
 
         winner = winnerController.getWinner(filed);
-        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
+        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure, currentMufes)) {
             return false;
         }
 
@@ -69,20 +65,20 @@ public class ConsoleView {
 
     }
 
-    private boolean checkForWiners(Player[] players, TextView playerMove, ImageView imageView, Context view, Figure winner, Figure currentFigure) {
+    private boolean checkForWiners(Player[] players, TextView playerMove, ImageView imageView, Context view, Figure winner, Figure currentFigure, int currentMufes) {
         if (winnerIsPlayer(players, winner, playerMove, imageView, view)) {
             return true;
         }
 
-        if (noWinnerAndNoMovesLeft(winner, currentFigure, playerMove)) {
+        if (noWinnerAndNoMovesLeft(winner, currentMufes, playerMove)) {
             return true;
         }
         return false;
     }
 
     @SuppressLint("SetTextI18n")
-    boolean noWinnerAndNoMovesLeft(Figure winner, Figure currentFigure, TextView playerMove) {
-        if (currentFigure == null) {
+    boolean noWinnerAndNoMovesLeft(Figure winner, int currentMufes, TextView playerMove) {
+        if (currentMufes == 0) {
             if (winner == null) {
                 System.out.printf("No winner and no moves left");
                 playerMove.setText("No winner and no moves left");
@@ -111,8 +107,6 @@ public class ConsoleView {
 
         //TODO how names ferst
         System.out.printf("Player move: %s, figure: %s\nPlease enter move point \n", playerName(players, currentFigure, imageView, context), currentFigure);
-     //   playerMove.setText(String.format("Player move: %s, figure: %s", playerName(players, currentFigure, imageView, context), currentFigure));
-
         final Point point = setPoints(x, y);
         try {
             moveController.applyFigure(filed, point, currentFigure);

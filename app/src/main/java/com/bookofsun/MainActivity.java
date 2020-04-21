@@ -45,12 +45,15 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Player[] players;
     private boolean move = true;
     private int turn;
+    private int currentMufes;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        currentMufes = 9;
 
         playerMove = findViewById(R.id.player_move_textView);
 
@@ -176,10 +179,11 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
     void setMove(int x, int y, ImageView imageView, Context applicationContext) {
         if (this.move) {
+            currentMufes --;
 
             setPlayerTyrn();
 
-            this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext, turn);
+            this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext, turn, currentMufes);
             consoleView.show(gameXO);
         }
     }
