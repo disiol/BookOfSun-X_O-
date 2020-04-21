@@ -13,7 +13,6 @@ import com.bookofsun.CLI.modelCLI.Figure;
 import com.bookofsun.CLI.modelCLI.Filed;
 import com.bookofsun.CLI.modelCLI.Game;
 import com.bookofsun.CLI.modelCLI.Player;
-import com.bookofsun.CLI.modelCLI.exeptions.InvalidPointException;
 import com.bookofsun.CLI.viewCLI.AnterNamesOfPlaers;
 import com.bookofsun.CLI.viewCLI.ConsoleView;
 
@@ -45,6 +44,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     private Game gameXO;
     private Player[] players;
     private boolean move = true;
+    private int turn;
 
 
     @Override
@@ -96,7 +96,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         plaeyr1Name = intent.getStringExtra(PLAYER_WANE_NAME);
         plaeyr2Name = intent.getStringExtra(PLAYER_TO_NAME);
 
-        setXOCLI(plaeyr1Name, plaeyr2Name);
+        setXOCLI("plaeyr1Name", " plaeyr2Name");
 
 
     }
@@ -119,7 +119,6 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         playerMove.setText(String.format("Player move: %s, figure: %s", players[0].getName(), players[0].getFigure()));
 
 
-
     }
 
     @Override
@@ -129,6 +128,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
                 setMove(0, 0, imageView2, this.getApplicationContext());
                 break;
             case R.id.imageView3:
+
                 setMove(1, 0, imageView3, this.getApplicationContext());
                 break;
             case R.id.imageView4:
@@ -166,9 +166,20 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
     }
 
-    void setMove(int x, int y, ImageView imageView, Context applicationContext)  {
+    private void setPlayerTyrn() {
+        if (turn == 1) {
+            turn = 0;
+        } else {
+            turn = 1;
+        }
+    }
+
+    void setMove(int x, int y, ImageView imageView, Context applicationContext) {
         if (this.move) {
-            this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext);
+
+            setPlayerTyrn();
+
+            this.move = consoleView.move(gameXO, players, playerMove, arayCordinats[x], arayCordinats[y], imageView, applicationContext, turn);
             consoleView.show(gameXO);
         }
     }

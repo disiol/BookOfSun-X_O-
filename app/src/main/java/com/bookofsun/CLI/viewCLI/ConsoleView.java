@@ -46,22 +46,21 @@ public class ConsoleView {
     }
 
     //TODO
-    public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view) {
+    public boolean move(final Game game, Player[] players, TextView playerMove, int x, int y, ImageView imageView, Context view, int turn) {
         final Filed filed = game.getFiled();
         Figure winner = winnerController.getWinner(filed);
 
         final Figure currentFigure = currentMoveController.currentMove(filed);
 
-        //check for winers
-        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
-            return false;
-        }
+//        //check for winers
+//        if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
+//            return false;
+//        }
 
-
+        playerMove.setText(String.format("Player move: %s, figure: %s", players[turn].getName(), players[turn].getFigure()));
         playerMove(players, filed, currentFigure, playerMove, x, y, imageView, view);
 
         winner = winnerController.getWinner(filed);
-
         if (checkForWiners(players, playerMove, imageView, view, winner, currentFigure)) {
             return false;
         }
@@ -86,7 +85,6 @@ public class ConsoleView {
         if (currentFigure == null) {
             if (winner == null) {
                 System.out.printf("No winner and no moves left");
-
                 playerMove.setText("No winner and no moves left");
                 return true;
             }
@@ -113,7 +111,7 @@ public class ConsoleView {
 
         //TODO how names ferst
         System.out.printf("Player move: %s, figure: %s\nPlease enter move point \n", playerName(players, currentFigure, imageView, context), currentFigure);
-        playerMove.setText(String.format("Player move: %s, figure: %s", playerName(players, currentFigure, imageView, context), currentFigure));
+     //   playerMove.setText(String.format("Player move: %s, figure: %s", playerName(players, currentFigure, imageView, context), currentFigure));
 
         final Point point = setPoints(x, y);
         try {
@@ -131,12 +129,12 @@ public class ConsoleView {
         if (input == Figure.X) {
             imageView.setClickable(false);
             imageView.setImageDrawable(context.getDrawable(player[0].getPlayerFigure()));
-            return player[0].getName();
+            return player[1].getName();
         }
         if (input == Figure.O) {
             imageView.setImageDrawable(context.getDrawable(player[1].getPlayerFigure()));
             imageView.setClickable(false);
-            return player[1].getName();
+            return player[0].getName();
 
         }
 
