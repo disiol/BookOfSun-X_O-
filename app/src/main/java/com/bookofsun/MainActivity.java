@@ -99,7 +99,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         plaeyr1Name = intent.getStringExtra(PLAYER_WANE_NAME);
         plaeyr2Name = intent.getStringExtra(PLAYER_TO_NAME);
 
-        setXOCLI("plaeyr1Name", " plaeyr2Name");
+        setXOCLI(plaeyr1Name,  plaeyr2Name);
 
 
     }
