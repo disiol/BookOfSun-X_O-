@@ -4,6 +4,7 @@ import android.app.Application;
 
 
 import com.bookofsun.di.component.DaggerApplicationComponent;
+import com.onesignal.OneSignal;
 
 import javax.inject.Inject;
 
@@ -22,13 +23,13 @@ public class App extends Application implements HasAndroidInjector {
     public void onCreate() {
         super.onCreate();
 
-//
-//// OneSignal Initialization
-//        OneSignal.startInit(this)
-//                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
-//                .unsubscribeWhenNotificationsAreDisabled(true)
-//                .init();
-//
+
+// OneSignal Initialization
+        OneSignal.startInit(this)
+                .inFocusDisplaying(OneSignal.OSInFocusDisplayOption.Notification)
+                .unsubscribeWhenNotificationsAreDisabled(true)
+                .init();
+
 
         DaggerApplicationComponent.builder()
                 .context(this)
